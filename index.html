@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#12345b" />
+    <meta name="description" content="Panel público agregado de deuda de suministros de EPS GRAU S.A." />
+    <title>Deuda de suministros | EPS GRAU S.A.</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Ir al contenido</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">EG</span>
+          <div>
+            <p class="eyebrow">EPS GRAU S.A.</p>
+            <h1>Deuda de suministros</h1>
+          </div>
+        </div>
+        <div class="header-status" aria-live="polite">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Información actualizada</span>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenido" class="page-shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">Portal de consulta pública</p>
+          <h2 id="hero-title">Seguimiento consolidado de deuda y recuperación</h2>
+          <p class="hero-copy">Indicadores agregados por territorio, categoría y antigüedad. No se incluyen datos de clientes ni direcciones.</p>
+        </div>
+        <dl class="update-card">
+          <div><dt>Archivo fuente</dt><dd id="source-file">Cargando…</dd></div>
+          <div><dt>Fecha de datos</dt><dd id="source-date">—</dd></div>
+          <div><dt>Estado</dt><dd id="source-status">—</dd></div>
+        </dl>
+      </section>
+
+      <section aria-label="Indicadores principales" class="kpi-grid">
+        <article class="kpi-card"><p>Suministros</p><strong id="kpi-suministros">—</strong><span>registros consolidados</span></article>
+        <article class="kpi-card"><p>Deuda total</p><strong id="kpi-deuda">—</strong><span>saldo facturado pendiente</span></article>
+        <article class="kpi-card"><p>Saldo total</p><strong id="kpi-saldo">—</strong><span>cuenta corriente</span></article>
+        <article class="kpi-card"><p>Deuda promedio</p><strong id="kpi-promedio">—</strong><span>por suministro</span></article>
+        <article class="kpi-card"><p>Meses de deuda</p><strong id="kpi-meses">—</strong><span>promedio</span></article>
+        <article class="kpi-card accent"><p>Usuarios recuperados</p><strong id="kpi-recuperados">—</strong><span>en el archivo vigente</span></article>
+      </section>
+
+      <section class="section-heading">
+        <div><p class="eyebrow">Evolución</p><h2>Deuda y saldo histórico</h2></div>
+        <p id="history-summary" class="muted">Cargando histórico…</p>
+      </section>
+      <section class="panel chart-panel" aria-labelledby="trend-title">
+        <div class="chart-caption"><h3 id="trend-title">Evolución por archivo procesado</h3><div class="legend"><span class="legend-debt">Deuda</span><span class="legend-balance">Saldo</span></div></div>
+        <div id="trend-chart" class="svg-chart" role="img" aria-label="Evolución histórica de deuda y saldo"></div>
+      </section>
+
+      <section class="section-heading split-heading">
+        <div><p class="eyebrow">Distribución actual</p><h2>Deuda por territorio</h2></div>
+        <label class="filter-label" for="province-select">Resaltar provincia <select id="province-select"><option value="">Todas las provincias</option></select></label>
+      </section>
+      <section class="two-columns">
+        <article class="panel"><h3>Deuda por provincia</h3><div id="province-bars" class="bar-list" aria-live="polite"></div></article>
+        <article class="panel"><h3>Principales distritos por deuda</h3><div class="table-wrap"><table><thead><tr><th>Provincia</th><th>Distrito</th><th class="number">Suministros</th><th class="number">Deuda</th></tr></thead><tbody id="district-table"></tbody></table></div></article>
+      </section>
+
+      <section class="two-columns">
+        <article class="panel"><h3>Deuda por categoría</h3><div id="category-bars" class="bar-list"></div></article>
+        <article class="panel"><h3>Deuda por antigüedad</h3><div id="aging-bars" class="bar-list"></div></article>
+      </section>
+
+      <section class="section-heading"><div><p class="eyebrow">Recuperación</p><h2>Conexiones en proyecto</h2></div></section>
+      <section class="two-columns">
+        <article class="panel"><h3>Proyecto y recuperaciones por provincia</h3><div id="recovery-bars" class="bar-list"></div></article>
+        <article class="panel audit-panel"><h3>Control de actualización</h3><dl class="audit-list"><div><dt>Archivo</dt><dd id="audit-file">—</dd></div><div><dt>Registros importados</dt><dd id="audit-rows">—</dd></div><div><dt>Fecha de carga</dt><dd id="audit-time">—</dd></div><div><dt>Generado para web</dt><dd id="audit-generated">—</dd></div></dl></article>
+      </section>
+    </main>
+
+    <footer class="site-footer"><p>EPS GRAU S.A. · Datos consolidados de la última carga disponible.</p><p>Portal estático: la actualización se publica tras procesar una carga válida.</p></footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
