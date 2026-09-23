@@ -55,7 +55,7 @@
     }
     const labels = [];
     const interval = Math.max(1, Math.ceil(rows.length / 6));
-    points.forEach((point, index) => { if (index % interval === 0 || index === points.length - 1) labels.push(`<text class="axis-label" x="${point.x}" y="${height - 12}" text-anchor="middle">${escapeHtml(displayDate(point.fecha_datos).slice(0, 5))}</text>`); });
+    points.forEach((point, index) => { if (index % interval === 0 || index === points.length - 1) labels.push(`<text class="axis-label" x="${point.x}" y="${height - 12}" text-anchor="middle">${escapeHtml(displayDate(point.fecha_cierre || point.fecha_datos).slice(0, 5))}</text>`); });
     const last = points[points.length - 1];
     host.innerHTML = `<svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Líneas de deuda y saldo por fecha"><title>Evolución de deuda y saldo</title>${grid}<path class="debt-line" d="${line('deuda_total')}"></path><path class="balance-line" d="${line('saldo_total')}"></path><circle class="latest-dot" cx="${last.x}" cy="${y(value(last.saldo_total))}" r="4"></circle>${labels.join('')}</svg>`;
   }
@@ -65,6 +65,7 @@
     const source = data.source;
     setText('source-file', source.file || summary.file || '—');
     setText('source-date', displayDate(source.date));
+    setText('source-send-date', displayDate(source.sendDate));
     setText('source-status', source.status || '—');
     setText('kpi-suministros', number.format(value(summary.suministros)));
     setText('kpi-deuda', compactMoney(summary.deudaTotal));
@@ -73,7 +74,7 @@
     setText('kpi-meses', decimal.format(value(summary.mesesDeudaPromedio)));
     setText('kpi-recuperados', number.format(value(summary.usuariosRecuperados)));
     const history = data.history || [];
-    setText('history-summary', `${number.format(history.length)} archivos históricos procesados · último corte ${displayDate(history.at(-1)?.fecha_datos)}`);
+    setText('history-summary', `${number.format(history.length)} archivos históricos procesados · último cierre ${displayDate(history.at(-1)?.fecha_cierre || history.at(-1)?.fecha_datos)}`);
     renderTrend(history);
     setText('audit-file', source.file || '—');
     setText('audit-rows', number.format(value(source.importedRows)));
